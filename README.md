@@ -8,3 +8,5 @@ Github.io 博客自动生成工具
 	
 	hexo d -g # 生成并部署
 	
+	hexo g --watch # 监控文章内容的变化并自动生成静态文件
+	
