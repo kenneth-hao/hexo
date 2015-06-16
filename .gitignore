@@ -28,6 +28,7 @@ node_modules
 
 # hexo
 .deploy_git
+public
 
 # vi
 *.swp
