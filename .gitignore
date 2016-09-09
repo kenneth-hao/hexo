@@ -29,6 +29,7 @@ node_modules
 # hexo
 .deploy_git
 public
+themes/yilia
 
 # vi
 *.swp
