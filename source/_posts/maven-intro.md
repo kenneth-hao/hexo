@@ -1,58 +1,79 @@
 title: About Maven
 date: 2016-09-09 12:30:00
 tags: maven
+
 ---
 
 ## 序
 
 Maven 是什么？ 
 
->  Maven 是一种工具。 
+>  一种工具。 
 
 工具又是用来干嘛的呢？
 
->  工具是用来解决目前大家遇到的一些共性的、复杂的、耗时的问题。
+>  用来解决目前大家遇到的一些共性的、复杂的、耗时的问题。
 
-那么， Maven 是用来解决哪些问题的呢？
+任何一种工具的出现都是有原因的, 那么, Maven 又是用来解决哪些问题的呢？
 
+
+
+![title_pic](http://7xjzby.com1.z0.glb.clouddn.com/menu-restaurant-vintage-tab.jpg)
+
+<!-- more -->
 
 ## 过去
 
-在很久很久以前，我们在新建项目时，需要添加项目的源码目录 `src`，包目录 `lib`，资源目录 `WebRoot/WebContent/web` 等等.
+### 目录结构
 
-![Openfire 源码目录](http://7xjzby.com1.z0.glb.clouddn.com/openfire_src_dir_160909_1.png)![Simple Web src dir](http://7xjzby.com1.z0.glb.clouddn.com/simple_web_src_dir_160909.png)
+在过去，我们新建项目时，需要添加项目的源码目录 `src`，包目录 `lib`，资源目录 `WebRoot/WebContent/web` 等等.
 
-
+![web 源码目录](http://7xjzby.com1.z0.glb.clouddn.com/blog_maven_intro_web_src_dir.png)
 
 我们可以发现， 不同项目的目录结构，各有各的风格。
 
 这就会让我们在接触一个新的项目时，感到困惑。也不利于初学者的入门。
 
+> 不同的源码目录， 不同的 web 资源目录，散落的 jar ，都会在项目构建初期带来比较大的麻烦
 
+### jar 依赖
 
-然后，我们需要去不同的网站上下载项目所需要依赖的各种 jar 包，比如 Spring，junit 等等。 找 jar 包这个过程很痛苦， 做过的人都应该有所了解。 
+目录结构搭建完成后，我们往往还需要去不同的网站上下载项目所需要依赖的各种 jar 包。
 
-而比较有经验的工程师可能都会有自己的一个 jar 库， 当然， jar 的版本比较老也是免不了的。
+>  spring-2.5.6.jar、junit-4.9.jar etc..
+>
+>  找 jar 包这个过程很痛苦， 做过的人都应该有所了解。 
 
 在这个过程中， 我们需要找到合适的版本比如 aspectjrt-1.5.1.jar， 合适的依赖包 aspectjweaver-1.5.1.jar。
-多个 jar 包之间版本要兼容等等相关的问题。比如 spring-2.5.6.jar 需要依赖 slf4j-1.3.jar， 而 MyBatis 可能需要依赖 slf4j-1.5.jar. 这个时候还需要解决重复依赖的问题， 选择一个更兼容的版本。
+多个 jar 包之间版本要兼容等等相关的问题。比如 spring-2.5.6.jar 需要依赖 slf4j-1.3.jar， 而 MyBatis 可能需要依赖 slf4j-1.5.jar。这个时候还需要解决重复依赖的问题， 选择一个更兼容的版本。
 
-jar 包找齐之后， 我们还需要把对于 jar 包的依赖，添加到项目的 classpath 中（eclipse，不同的 IDE 下 classpath 的依赖是不同的)。
+jar 包找齐之后， 我们还需要把对于 jar 包的依赖，添加到项目的类路径依赖配置中「eg. `.classpath/.idea`」，不同的 IDE 下对于类路径的依赖也是不同的
 
-
-在最终的版本库（svn）中，除了项目必要的源码，可能还会包含各种 jar 包以及 classpath 之类相关 IDE 配置。
+> 比较有经验的工程师可能都会维护一个自己的 jar 库， 当然， jar 包的版本比较老也是难免的。
+>
+> 如果有必要，我们往往还需要下载项目的源码包，并导入到 IDE 环境中，IDE 源码配置也是相当烦人的一个操作
 
 总而言之，解决 jar 包的依赖，是传统的项目开发中一项不容忽视的工作。
 
-目前来看，至少有三个比较繁琐的步骤：
+### VersionControl
 
-1. 项目目录结构的生成， 规范性；
-2. 和 jar 包相关的使用和管理，依赖问题；
+在最终的版本库「`svn/git`」中，除了项目必要的源码，可能还会包含各种 jar 包以及 classpath 之类相关 IDE 配置。
+
+> jar 包都可以当做是现有类库，理论上没有必要出现在项目之中
+>
+> 而 IDE 相关配置作为开发环境自身的配置，更不应该作为项目的一部分被版本管理工具管理起来
+
+### Summary
+
+目前来看，传统的项目开发，至少有三个比较不好的地方：
+
+1. 项目目录结构的生成，没有规范；
+2. 和 jar 包相关的管理，依赖问题；
 3. 在版本库中包含了过多与项目自身无关的内容；
 
 ## 现在
 
-那么 Maven 是又通过哪种方式解决了这个繁琐的问题？
+那么，Maven 是又通过哪些方式解决了这些烦人的问题呢？
 
 Maven 使用惯例优于配置的原则。
 
@@ -66,6 +87,8 @@ Maven 使用惯例优于配置的原则。
 | ${basedir}/src/test/java      | 项目的测试类，比如说 JUnit代码              |
 | ${basedir}/src/test/resources | 测试使用的资源                         |
 | ${basedir}/src/main/webapp    | 存放所有的 Web 资源, 比如 WEB-INF, 静态资源等 |
+
+> ${basedir} : 项目根目录
 
 Maven 为什么要使用惯例优于配置的原则？
 一方面，统一项目结构，降低大家看到新项目时的学习成本；
