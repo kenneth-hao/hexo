@@ -14,6 +14,6 @@ Github.io 博客自动生成工具
 	
 	cd hexo
 	
-	git clone https://github.com/litten/hexo-theme-yilia theme/yilia
+	git clone https://github.com/litten/hexo-theme-yilia themes/yilia
 	
 yilia 主题配置文件备份 `hexo/theme/yilia-config/_config.yml`
