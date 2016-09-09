@@ -13,10 +13,11 @@ Github.io 博客自动生成工具
 	
 [主题yilia](https://github.com/litten/hexo-theme-yilia)
 
-    Note: 新部署的 hexo 需要 clone yilia 主题
+    Note: 新部署的 hexo 需要 clone 主题
 	
 	cd hexo
 	
 	git clone https://github.com/litten/hexo-theme-yilia themes/yilia
+    git clone https://github.com/iissnan/hexo-theme-next themes/next
 	
 yilia 主题配置文件备份 `hexo/theme/yilia-config/_config.yml`
