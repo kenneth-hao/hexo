@@ -1,6 +1,7 @@
 # hexo
 Github.io 博客自动生成工具
 
+    hexo s --debug # 本地调试启动
 
 	hexo n x.md  # 生成新的文章
 	
