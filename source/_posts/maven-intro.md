@@ -1,4 +1,7 @@
-# Maven 是什么？
+title: About Maven
+date: 2016-09-09 12:30:00
+tags: maven
+---
 
 ## 序
 
@@ -80,11 +83,18 @@ Maven 提供了一种方式， 让每一个组件都可以拥有自己的 locati
 groupId + articleId + version + [type]。
 eg.  `org.springframework.spring-mvc-3.2.2.jar`
 
-	<dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-mvc</artifactId>
-	    <version>3.2.2</version>
-	</dependency>
+```xml
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-mvc</artifactId>
+    <version>3.2.2</version>
+</dependency>
+```
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-mvc</artifactId>
+        <version>3.2.2</version>
+    </dependency>
 
 
 通过在项目中配置所需依赖包的 location， 我们就可以让项目自动依赖所需的 jar 包。
