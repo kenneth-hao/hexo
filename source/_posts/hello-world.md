@@ -7,9 +7,9 @@ tags: 始
 
 
 
-	System.out.println("Hello, World!");  // Java
+    System.out.println("Hello, World!");  // Java
 
-	print u'Hello, World!'  # python
+    print u'Hello, World!'  # python
 	
 	console.log('Hello, World!');   // Javascript & nodejs
 	
