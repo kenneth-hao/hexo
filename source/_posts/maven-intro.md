@@ -75,9 +75,15 @@ jar 包找齐之后， 我们还需要把对于 jar 包的依赖，添加到项�
 
 那么，Maven 是又通过哪些方式解决了这些烦人的问题呢？
 
+### 目录结构
+
 Maven 使用惯例优于配置的原则。
 
-它要求在没有定制之前，所有的项目都有如下的结构： 
+它要求在没有定制之前，所有的项目都有如下的结构 ( 以 web 项目为例 )：  
+
+![maven_simple_web_structure](http://7xjzby.com1.z0.glb.clouddn.com/maven_simple_web_structure.png)
+
+
 
 | 目录                            | 目的                              |
 | :---------------------------- | ------------------------------- |
@@ -88,7 +94,7 @@ Maven 使用惯例优于配置的原则。
 | ${basedir}/src/test/resources | 测试使用的资源                         |
 | ${basedir}/src/main/webapp    | 存放所有的 Web 资源, 比如 WEB-INF, 静态资源等 |
 
-> ${basedir} : 项目根目录
+> 其中， ${basedir} : 代表项目根目录
 
 Maven 为什么要使用惯例优于配置的原则？
 一方面，统一项目结构，降低大家看到新项目时的学习成本；
