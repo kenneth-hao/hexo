@@ -16,6 +16,10 @@ tags: maven
 
 Maven 的诞生自然也难以摆脱这个既定的事实 - 只是因为程序员很懒 ╮(╯▽╰)╭, 还爱瞎折腾。
 
+![title_pic](http://7xjzby.com1.z0.glb.clouddn.com/menu-restaurant-vintage-tab.jpg)
+
+<!-- more -->
+
 ### Question?
 
 Maven 是什么？ 
@@ -27,12 +31,6 @@ Maven 是什么？
 >  用来解决目前大家遇到的一些共性的、复杂的、耗时的问题。
 
 任何一种工具的出现都是有原因的, 那么, Maven 又是用来解决哪些问题的呢？
-
-
-
-![title_pic](http://7xjzby.com1.z0.glb.clouddn.com/menu-restaurant-vintage-tab.jpg)
-
-<!-- more -->
 
 ## 过去
 
