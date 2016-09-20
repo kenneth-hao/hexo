@@ -262,19 +262,66 @@ eg.  `org.springframework.spring-core-3.2.4.jar`
 
 ![repository_dir_structure](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_repository_dir_tree_160919.png)
 
+除了本地仓库之外，`Maven` 还有上文中已提及到的 [中央仓库](https://repo1.maven.org/maven2/) 和 私有仓库「`Nexus` or `Artifactory`」
+
+[中央仓库](https://repo1.maven.org/maven2/)，是由 `Maven` 社区管理的仓库， 无需配置， 直接通过网络即可访问。所有开源的社区都会把自己开发的项目发布到中央仓库， 缺点就是因为会提供给全世界使用，所以，慢的常常让人无法接受。
+
+私有仓库，主要就是为了解决中央仓库访问缓慢的问题而出现的，它也可以用来存储一些公司内部发布的，非公开的  `artifact` 构件。
+
+一般来说，每个使用 `Maven` 的组织都会搭建一个自己的 `Maven` 私服。 `Maven` 私服在搭建成功后，默认需要从中央仓库中拿到所有 `artifact` 构件的索引（这个时候并不会把真正的组件下载到服务器），方便开发人员可以直接在私服中检索是否存在项目所需要依赖的 `artifact`。
+
+> `REF`: [如何搭建 `Nexus` 私服](https://my.oschina.net/liangbo/blog/195739)
+>
+> `Note` : 教程是 2.0+ 版本的 `Nexus`， 官方最新的版本已经到 3.0+ 了， 但是学习资源还很少。
+
+当我们的项目需要具体依赖某一个 `artifact` 时，私服首先会在本地查看索引中是否已存在，如果索引中存在 `artifact`， 则查看是否存在具体的构件。 如果构件不存在，就先从中央服务器下载构件，并存储到私服自己的仓库中。
+
+eg.  当我们在项目中配置 `spring-core-2.5.6.jar` 的依赖时， `Maven` 是如何找到这个构件，并下载到本地
+
+![maven_intro_artifact_query_in_repository_s_order_190920.png](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_artifact_query_in_repository_s_order_190920.png)
+
+> `Tips`: 由于中央仓库的访问速度太过缓慢， 我们还可以配置一些 [国内的 `Maven` 私服镜像](https://my.oschina.net/fdblog/blog/546938)
+>    比如 `OSC` 的国内镜像 「一般会配置在 `~/.m2/settings.xml` 中」, 
+> ```xml
+> <mirror>
+>   <id>CN</id>
+>   <name>OSChina Central</name>                                   
+>   <url>http://maven.oschina.net/content/groups/public/</url>
+>   <mirrorOf>central</mirrorOf>
+> </mirror>
+> ```
+
+`Note`: 在使用的过程中，我们还需要注意一些商业项目， 比如 `Oracle` 官方提供的 `JDBC Driver - ojdbc14.jar` 是不会出现在中央仓库中的。所以在使用过程中，我们需要单独把这些特殊的 `artifact` 手工上传到我们的私服上， 所幸这种类型的构件很少。
+
+![Nexus_u2_3rd_rep](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_3rd_u2_rep_160920.gif)
+
+
+上传成功后， 我们便可以在私服的仓库中看到这个文件
+
+
+![Nexus_3rd_in_rep](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_3rd_in_rep_160920_final.png)
+
+>`Note` : 必须登录以后，才可以在私服上传构件
+
 ### IDE 集成
 
 // `Tips`: `IDEA` 中默认已集成，足以满足我们的日常使用
 
 ### New Project in Maven
 
-> 演示 `Maven` 新建项目, 展示默认约定的目录结构
+> 演示 `Maven` 新建一个简单の项目, 展示默认约定的目录结构
+
+![new project in IDEA by Maven](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_new_in_idea_190920.gif)
 
 ### pom.xml
 
-
+在演示中，我们可以发现，项目在新建之后默认会打开一个文件 - `pom.xml`。这个文件对于我们的日常的开发工作而言，使用是最频繁的。
 
 ### The Life-Cycle
+
+
+
+
 
 ## Maven 还可以做什么?
 
