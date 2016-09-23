@@ -293,8 +293,7 @@ eg.  当我们在项目中配置 `spring-core-2.5.6.jar` 的依赖时， `Maven`
 
 `Note`: 在使用的过程中，我们还需要注意一些商业项目， 比如 `Oracle` 官方提供的 `JDBC Driver - ojdbc14.jar` 是不会出现在中央仓库中的。所以在使用过程中，我们需要单独把这些特殊的 `artifact` 手工上传到我们的私服上， 所幸这种类型的构件很少。
 
-![Nexus_u2_3rd_rep](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_3rd_u2_rep_160920.gif)
-
+[Demo](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_3rd_u2_rep_160920.gif)
 
 上传成功后， 我们便可以在私服的仓库中看到这个文件
 
@@ -311,7 +310,7 @@ eg.  当我们在项目中配置 `spring-core-2.5.6.jar` 的依赖时， `Maven`
 
 > 演示 `Maven` 新建一个简单の项目, 展示默认约定的目录结构
 
-![new project in IDEA by Maven](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_new_in_idea_190920.gif)
+[Demo](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_new_in_idea_190920.gif)
 
 ### pom.xml
 
@@ -350,3 +349,5 @@ eg.  当我们在项目中配置 `spring-core-2.5.6.jar` 的依赖时， `Maven`
 ### 构建自动化
 
 maven 的生命周期指项目的构建过程，它包含了一系列有序的阶段
+
+### Maven or Ant
