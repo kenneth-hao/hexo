@@ -316,7 +316,228 @@ eg.  当我们在项目中配置 `spring-core-2.5.6.jar` 的依赖时， `Maven`
 
 在演示中，我们可以发现，项目在新建之后默认会打开一个文件 - `pom.xml`。这个文件对于我们的日常的开发工作而言，使用是最频繁的。
 
+下面是一个比较全面的 `pom` 文件。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 项目坐标 -->
+    <!-- groupId - 一般会定义为公司域名倒序 -->
+    <!-- artifactId - 一般会定义为项目名称/组件名称 -->
+    <groupId>org.dxy</groupId>
+    <artifactId>learn-mvn</artifactId>
+    <!-- 项目版本号 -->
+    <version>1.0-SNAPSHOT</version>
+    <!-- 项目构建成功后的最终类型, 默认为 `jar`, 可忽略不写 -->
+    <!-- 其他常用的值还有: war - web 应用, pom - 用于 `pom` 继承(Parent Project) 或者 多模块(Modules)项目合成 -->
+    <packaging>war</packaging>
+
+    <!-- 项目分发信息，在执行 `mvn deploy` 后表示要发布的位置。有了这些信息就可以把网站部署到远程服务器或者把构件部署到远程仓库。 -->
+    <!-- Note: 必须在 `settings.xml` 已配置 <server> 节点, 并在节点中指定了私有仓库的用户名和密码 -->
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>true</uniqueVersion>
+            <id>MAVEN-releases</id>
+            <name>MAVEN-releases</name>
+            <url>http://192.168.0.xxx/components/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <uniqueVersion>true</uniqueVersion>
+            <id>MAVEN</id>
+            <name>MAVEN-snapshot</name>
+            <url>http://192.168.0.xxx/components/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- 常用于抽离一些 `pom` 配置中可能会发生变化的值 -->
+    <properties>
+        <!-- 项目属性 -->
+        <!--
+        <jdbc.driver.groupId>com.h2database</jdbc.driver.groupId>
+        <jdbc.driver.artifactId>h2</jdbc.driver.artifactId>
+        <jdbc.driver.version>${h2.version}</jdbc.driver.version>
+        -->
+        <jdbc.driver.groupId>mysql</jdbc.driver.groupId>
+        <jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
+        <jdbc.driver.version>5.1.22</jdbc.driver.version>
+        <!-- 构件的依赖版本 -->
+        <junit.version>4.9</junit.version>
+        <!-- Plugin的属性 -->
+        <java.version>1.6</java.version>
+        <!-- 一些默认的项目全局变量 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 还有其他许多 ${project.*} 的默认全局变量, 可以直接在 `pom` 的配置中使用. -->
+    </properties>
+
+    <!-- 构建依赖配置 -->
+    <dependencies>
+        <!-- JDBC -->
+        <dependency>
+            <groupId>${jdbc.driver.groupId}</groupId>
+            <artifactId>${jdbc.driver.artifactId}</artifactId>
+            <version>${jdbc.driver.version}</version>
+        </dependency>
+        <!-- Test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- 插件配置 -->
+    <build>
+        <plugins>
+            <!-- compiler插件, 设定JDK版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+
+            <!-- source attach plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- war打包插件, 设定war包名称不带版本号 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <!-- 这里使用了 maven 默认的全局变量 -->
+                    <warName>${project.artifactId}</warName>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
+```
+
+
+
+> 演示 parent 集成 & 多模块开发
+>
+> 
+
 ### The Life-Cycle
+
+在 `pom.xml`  的配置中， 我们提到了 `packaging` ， 用于指定项目最终构建的文件类型。
+
+那么, `maven` 项目是如何构建的呢？
+
+![maven_intro_mvn_package_demo.gif](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_mvn_package_demo.gif)
+
+`mvn package` 会根据 `pom.xml` 中描述的构建配置创建 `jar/war`。
+
+其中， `package` 是 `maven` 构建生命周期的一部分。
+
+那么， 什么是构建生命周期呢？
+
+软件开发人员每天都在对项目进行清理、编译、测试 & 部署，这些就是一个项目构件的生命周期。
+
+大家都在不停地做构建工作，每天不同的项目之间，都会用不同的方式来做类似的工作。
+
+`Maven` 的生命周期就是为了对所有的构建过程进行抽象和统一。
+
+生命周期是一个抽象的概念，它本身不需要做任何工作。实际的任务（如编译源代码）都交由插件来完成。类似设计模式中的模板方法（Template Method）。
+
+构建生命周期是一组阶段的序列（sequence of phases），每个阶段定义了目标被执行的顺序。这里的阶段是生命周期的一部分。
+
+Maven 一共包含三套相互独立的生命周期，分别为 `clean`、`default`、`site`。
+
+- `clean`  - 用于清理项目已有构建
+- `default` - 用于构建项目
+- `site` - 用于建立项目站点
+
+上面每个生命周期都包含一些阶段（phase）， 这些阶段是有序执行的。
+
+`default`生命周期包含以下几个常见的阶段（表中已省略了一部分 `phase`） :
+
+| 生命周期阶段            | 描述                                       |
+| ----------------- | ---------------------------------------- |
+| validate          | 检查工程配置是否正确，完成构建过程的所有必要信息是否能够获取到          |
+| initialize        | 初始化构建状态，例如设置属性                           |
+| process-sources   | 处理项目源码文件                                 |
+| process-resources | 处理项目资源文件                                 |
+| compile           | 编译工程源码                                   |
+| test              | 使用适当的单元测试框架（例如JUnit）运行测试                 |
+| package           | 获取编译后的代码，并按照可发布的格式进行打包，例如 JAR、WAR 或者 EAR 文件 |
+| install           | 安装工程包到本地仓库中，该仓库可以作为本地其他工程的依赖             |
+| deploy            | 拷贝最终的工程包到远程仓库中，以共享给其他开发人员和工程             |
+
+构建 `Maven` 项目， 最主要的方式就是调用 `Maven` 的生命周期阶段。
+
+以其中最常用的 `default` 为例。
+
+`$mvn package` : 该命令调用 `default` 生命周期的 `package ` 阶段。但实际执行的阶段为 `default` 生命周期的 `validate`、`initialize`、… , 直到 `package` 的所有阶段。
+
+### `Maven` 插件
+
+上文中我们提到，生命周期的具体工作都是通过具体的插件来完成。
+
+比如，
+
+```xml
+<!-- 插件配置 -->
+<build>
+  <plugins>
+    <!-- compiler 插件, 设定JDK版本 -->
+    <plugin>
+      <!-- 可省略，如果插件是 Maven 的官方插件 -->
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.1</version>
+      <configuration>
+        <source>${java.version}</source>
+        <target>${java.version}</target>
+        <showWarnings>true</showWarnings>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+```
+
+在上面的配置中， 我们配置了用于编译的源代码的插件，并指定了编译时所使用的 `JDK` 版本。
+
+在实际的使用过程中，为了能让用户不用任何配置就能构建 `Maven` 项目， `Maven` 默认已经为一些主要的生命周期阶段绑定了很多默认的插件目标（plugin:goal）。
+
+下表中列出一些常见的插件目标
+
+| 生命周期阶段                 | 插件目标                                 | 执行任务            |
+| ---------------------- | ------------------------------------ | --------------- |
+| process-resources      | maven-resources-plugin:resources     | 复制主资源文件到主输出目录   |
+| compile                | maven-compile-plugin:compile         | 编译主代码到主输出       |
+| process-test-resources | maven-resources-plugin:testResources | 复制测试资源文件到测试输出目录 |
+| test-compile           | maven-compile-plugin:testCompile     | 编译测试代码到测试输出目录   |
+| test                   | maven-surefire-plugin:test           | 执行测试用例          |
+| package                | maven-jar-plugin:jar                 | 创建项目 jar 包      |
+| install                | maven-install-plugin:install         | 将目录输出构件安装到本地仓库  |
+| deploy                 | maven-deploy-plugin:deploy           | 将项目输出构件部署到远程仓库  |
+
+`Maven` 插件非常多，但大多数没有完善的文档。
+
+`Maven` 插件也支持自定义扩展，是一个比较大的体系。有兴趣的同学可以自己扩展一下。
 
 
 
@@ -345,9 +566,5 @@ eg.  当我们在项目中配置 `spring-core-2.5.6.jar` 的依赖时， `Maven`
 多项目之间的依赖， 首先 第一个问题，就是我们需要通过 IDE 的项目依赖配置， 来解决开发过程中不断打 jar 包来构建依赖的问题。
 第二个就是依赖版本的控制， 这个怎么理解呢？比如 我们的 Web 应用的版本是 1.0， 而所依赖某个组件， 比如组件 A 的版本可能是 0.1。 组件 A 由专门的开发组来维护。 
 随着时间的推移， 我们的Web 应用可能升级到了 2.3， 而组件因为一直稳定所以还是0.1.  有一天突然有一个安全问题， 导致所有应用的组件 A 都需要升级到 0.5。
-
-### 构建自动化
-
-maven 的生命周期指项目的构建过程，它包含了一系列有序的阶段
 
 ### Maven or Ant
