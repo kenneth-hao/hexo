@@ -154,7 +154,7 @@ Maven 为什么要使用惯例优于配置的原则？
 ### jar 依赖
 
 Maven 提供了一种方式， 让每一个组件都可以拥有自己的 location 坐标。
-groupId + articleId + version + [type]。
+groupId + artifactId + version + [type]。
 eg.  `org.springframework.spring-mvc-3.2.2.jar`
 
 ```xml
