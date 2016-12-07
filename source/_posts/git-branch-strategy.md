@@ -1,8 +1,7 @@
 title: Git 分支管理策略
 date: 2016-11-15 15:10:22
-tags:
+tags: git
 
-- git
 ---
 
 ## Git 分支管理策略
