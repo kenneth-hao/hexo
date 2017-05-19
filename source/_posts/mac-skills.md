@@ -1,10 +1,8 @@
-title: Mac Skills - Improve Efficiency
-
+title: Mac Skills - Improve Efficiency (Undone)
 date: 2017-04-24 22:00:00
+tags: [mac, skill]
 
-tags: mac
-
-
+---
 
 ## Tools
 
@@ -62,9 +60,7 @@ brew cask install sublime-text
 brew cask install typora
 ```
 
-
-
-
+<!-- more -->
 
 ### iTerm2
 

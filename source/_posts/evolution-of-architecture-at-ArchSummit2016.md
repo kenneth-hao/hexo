@@ -1,6 +1,6 @@
-title: 架构演进 at ArchSummit2016
+title: 架构演进 at ArchSummit2016 (Undone)
 date: 2016-12-07 21:03:48
-tags: architecture 
+tags: [architecture]
 
 ---
 
@@ -42,6 +42,8 @@ B 端存储主要用 Oracle。 C 端存储主要用 MySQL
 当时在刚刚接手这套系统的时候, 就是在救火, 同事给我起的外号, 叫消防队长. 
 
 当时的情况就是拿着消防队长的钱, 操着卖白粉的心. 一个不小心就可能被十几万经纪人在背后默默的慰问了无数次.
+
+<!-- more -->
 
 总结一下过去遇到的技术问题
 
