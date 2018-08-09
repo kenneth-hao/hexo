@@ -21,7 +21,11 @@ App 内有关医生列表的 UI 在第一次打开的时候，渲染比较慢。
 
 以 `Top Menu` 的 `问医生` 为案例。
 
-![Demo1](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/07/51c56e07.jpg) | ![Demo2](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/07/112bd3fb-d696-4eb3-afd8-03f46074c9ef.jpg)
+![Demo1](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/07/51c56e07.jpg) 
+
+<!-- more -->
+
+![Demo2](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/07/112bd3fb-d696-4eb3-afd8-03f46074c9ef.jpg)
 
 Charles 调试，发现接口「/app/i/ask/sectiongroup/member」在第一次请求中，响应时间明显比较慢。大概在 1.1 s 左右。
 
