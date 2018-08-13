@@ -3,7 +3,7 @@ title: 常见的 Web Safe 攻防战
 
 date: 2018-08-12 16:30:00
 
-tags: web safe xss csrf demo
+tags: web,security,xss,csrf,demo
 
 ---
 
