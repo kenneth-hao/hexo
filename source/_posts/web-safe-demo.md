@@ -7,8 +7,6 @@ tags: web safe xss csrf demo
 
 ---
 
-# 常见的 Web Safe 攻防战 
-
 
 > 本次分享的目的，重点在于，让大家对常见的 Web 攻击有一个直观的认知。
 >
