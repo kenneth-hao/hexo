@@ -1,12 +1,8 @@
-
 title: 常见的 Web Safe 攻防战 
-
 date: 2018-08-12 16:30:00
-
 tags: [web, security, xss, csrf, demo]
 
-
-
+---
 
 > 本次分享的目的，重点在于，让大家对常见的 Web 攻击有一个直观的认知。
 >
