@@ -7,7 +7,7 @@ tags: [it, linux, python, scrapy]
 > Demo 中安装版本为 `1.0.0`
  前提 [Python on Linux - 安装](http://kenneth-hao.github.io/2015/06/29/Python-on-Linux-Install-md/)
  
-![scrapy 官方图片](http://7xjzby.com1.z0.glb.clouddn.com/blog_scrapy_offical%202015-07-01%2018.25.24.png)
+![scrapy 官方图片](http://h.img.siblings.top/blog_scrapy_offical%202015-07-01%2018.25.24.png)
 
 ### 安装 Twisted
 

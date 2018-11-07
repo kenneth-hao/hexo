@@ -386,7 +386,7 @@ so ~ , 信息在传输过程中，又被破解了。
 
 生产环境中，`CA` 签发的证书被配置在前端服务器 `nginx` 的集群上。
 
-![简易的 HTTPS 应用架构图](http://7xjzby.com1.z0.glb.clouddn.com/https%20%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
+![简易的 HTTPS 应用架构图](http://h.img.siblings.top/https%20%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 
 #### 为什么不直接配置在应用服务器上呢？
 

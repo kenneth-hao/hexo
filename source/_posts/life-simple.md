@@ -3,7 +3,7 @@ date: 2015-06-16 16:24:52
 tags: 随想
 ---
 
-![li_jiang](http://7xjzby.com1.z0.glb.clouddn.com/lijiang_150612.jpg)
+![li_jiang](http://h.img.siblings.top/lijiang_150612.jpg)
 
 你看, 生活好像本就该这样, 有一点小小的追求, 一点小小的期望.  随心, 随性的活着. 会遇到一点挫折, 会感到一点辛苦. 就好像一切都是那么的自然而然. 我们努力去感受平凡中那点滴的幸福, 而在一切的不如意的面前, 幸福也才显得更加弥足珍贵.
 

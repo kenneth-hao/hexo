@@ -21,16 +21,16 @@ App 内有关医生列表的 UI 在第一次打开的时候，渲染比较慢。
 
 以 `Top Menu` 的 `问医生` 为案例。
 
-![Demo1](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/09/demo_index_ntrance.png)
+![Demo1](http://h.img.siblings.top/2018/08/09/demo_index_ntrance.png)
 
 <!-- more -->
 
-![Demo2](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/07/112bd3fb-d696-4eb3-afd8-03f46074c9ef.jpg)
-http://7xjzby.com1.z0.glb.clouddn.com/2018/08/09/demo_index_ntrance.png
+![Demo2](http://h.img.siblings.top/2018/08/07/112bd3fb-d696-4eb3-afd8-03f46074c9ef.jpg)
+http://h.img.siblings.top/2018/08/09/demo_index_ntrance.png
 
 Charles 调试，发现接口「/app/i/ask/sectiongroup/member」在第一次请求中，响应时间明显比较慢。大概在 1.1 s 左右。
 
-![Charlse 慢请求](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/07/charles_api_slow_record.png)
+![Charlse 慢请求](http://h.img.siblings.top/2018/08/07/charles_api_slow_record.png)
 
 
 
@@ -38,11 +38,11 @@ Charles 调试，发现接口「/app/i/ask/sectiongroup/member」在第一次请
 
 #### 慢响应 (> 500 ms) 总数
 
-![180731_Tues_slow_count](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/07/180731_Tues_slow_count.png)
+![180731_Tues_slow_count](http://h.img.siblings.top/2018/08/07/180731_Tues_slow_count.png)
 
 #### 平均响应时间
 
-![180731_Tues_slow_average](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/07/180731_Tues_slow_average.png)
+![180731_Tues_slow_average](http://h.img.siblings.top/2018/08/07/180731_Tues_slow_average.png)
 
 
 
@@ -64,7 +64,7 @@ Charles 调试，发现接口「/app/i/ask/sectiongroup/member」在第一次请
 
 在本地环境去掉缓存注解后，重新调试接口。接口平均响应时间在 1s +。
 
-![Chrome API slow Debug](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/07/chrome_api_slow_debug.png)
+![Chrome API slow Debug](http://h.img.siblings.top/2018/08/07/chrome_api_slow_debug.png)
 
 可以断定，接口内部实现中，存在导致慢响应的因素。
 
@@ -232,11 +232,11 @@ public class TagExtractSupport {
 
 #### 慢响应 (> 500 ms) 总数 「25 n => 0.5 n」
 
-![180808_Wed_slow_count](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/09/180808_Wed_slow_count.png)
+![180808_Wed_slow_count](http://h.img.siblings.top/2018/08/09/180808_Wed_slow_count.png)
 
 #### 平均响应时间 「400 ms => 100 ms」
 
-![180808_Wed_slow_average](http://7xjzby.com1.z0.glb.clouddn.com/2018/08/09/180808_Wed_slow_average.png)
+![180808_Wed_slow_average](http://h.img.siblings.top/2018/08/09/180808_Wed_slow_average.png)
 
 
 

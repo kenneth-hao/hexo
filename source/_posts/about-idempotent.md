@@ -78,7 +78,7 @@ bool withdraw(account_id, amount)
 
 如果是在网页上，一些不恰当的设计可能会使用户认为上一次操作失败了，然后刷新页面，这就导致了 `withdraw` 被调用两次，账户也被多扣了一次钱 (客户端行为不可预知，不能依赖客户端行为) 。如「图 1」所示：
 
-![图 1](http://7xjzby.com1.z0.glb.clouddn.com/idempotent_img1.png)
+![图 1](http://h.img.siblings.top/idempotent_img1.png)
 
 一种轻量级的解决方案是把 API 设计为幂等性的。我们可以通过一些技巧把 `withdraw` 变成幂等的。比如：
 
@@ -98,7 +98,7 @@ bool idempotent_withdraw(ticket_id, account_id, amount)
 1. 调用 `create_ticket()` 获取 `ticket_id`；
 2. 调用 `idempotent_withdraw(ticket_id, account_id, amount)`。虽然 `create_ticket` 不是幂等的，但在这种设计下，它对系统状态的影响可以忽略，加上 `idempotent_withdraw` 是幂等的，所以任何一步由于网络等原因失败或超时，客户端都可以重试，直到获得结果。如「图 2」所示：
 
-![图 2 ](http://7xjzby.com1.z0.glb.clouddn.com/idempotent_img2.png)
+![图 2 ](http://h.img.siblings.top/idempotent_img2.png)
 
 幂等设计的优势在于它的轻量级，容易适应异构环境，以及性能和可用性方面。在某些性能要求比较高的应用，幂等设计往往是唯一的选择。
 

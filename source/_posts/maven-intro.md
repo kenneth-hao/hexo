@@ -16,7 +16,7 @@ tags: maven
 
 Maven 的诞生自然也难以摆脱这个既定的事实 - 只是因为程序员很懒 ╮(╯▽╰)╭, 还爱瞎折腾。
 
-![title_pic](http://7xjzby.com1.z0.glb.clouddn.com/menu-restaurant-vintage-tab.jpg)
+![title_pic](http://h.img.siblings.top/menu-restaurant-vintage-tab.jpg)
 
 <!-- more -->
 
@@ -38,7 +38,7 @@ Maven 是什么？
 
 在过去，我们新建项目时，需要添加项目的源码目录 `src`，包目录 `lib`，资源目录 `WebRoot/WebContent/web` 等等.
 
-![web 源码目录](http://7xjzby.com1.z0.glb.clouddn.com/blog_maven_intro_web_src_dir.png)
+![web 源码目录](http://h.img.siblings.top/blog_maven_intro_web_src_dir.png)
 
 我们可以发现， 不同项目的目录结构，各有各的风格。
 
@@ -84,7 +84,7 @@ jar 包找齐之后， 我们还需要把对于 `jar` 包的依赖，添加到�
 假如， 现在有这样一个场景， 公司有多个项目组， 其中有架构组（F） 负责缓存 日志等公用服务，基础资源组（B） - 系统公用资源层的开发 负责用户 角色 资源的基础服务， `Web` 应用开发组（W）- 负责最终的商业项目开发， 还有负责不同业务线的开发小组。
 
 现在， 我们的系统架构是这样:
-![maven_multi_project_framework](http://7xjzby.com1.z0.glb.clouddn.com/maven_multi_project_framework_160917.png)
+![maven_multi_project_framework](http://h.img.siblings.top/maven_multi_project_framework_160917.png)
 
 我们的 `Web` 应用 A， 假设目前的  `Release` 版本号是 2.0.   它所依赖的架构组件， 版本号是 0.1. 
 现在因为发现了一个安全问题， 版本号要更新到最新的  0.2.
@@ -128,7 +128,7 @@ Maven 使用惯例优于配置的原则。
 
 它要求在没有定制之前，所有的项目都有如下的结构 ( 以 web 项目为例 )：  
 
-![maven_simple_web_structure](http://7xjzby.com1.z0.glb.clouddn.com/maven_simple_web_structure.png)
+![maven_simple_web_structure](http://h.img.siblings.top/maven_simple_web_structure.png)
 
 
 
@@ -211,7 +211,7 @@ Maven 对于已经把源码提交的仓库的源码，可以在你需要查看�
 
 > `Note`: 安装完成后，如果找不到 `settings.xml` 请参考 `settings.xml` 小节的内容
 
-![maven_install_demo](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_install_190919.gif)
+![maven_install_demo](http://h.img.siblings.top/maven_intro_install_190919.gif)
 
 > 在真实的开发过程中， `IDE` 已经为我们准备了足够好用的初始化环境。所以，本地环境不安装也不会影响我们的使用。
 >
@@ -225,7 +225,7 @@ Maven 对于已经把源码提交的仓库的源码，可以在你需要查看�
 
  `mvn help:system`
 
-![mvn help:system](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_init_m2_dir_160919.gif)
+![mvn help:system](http://h.img.siblings.top/maven_intro_init_m2_dir_160919.gif)
 
 > 第一次执行，可能需要下载一些 goal 插件。 默认会从中央仓库下载， 但是中央仓库的速度很慢，最好提前配置好自己的私有仓库。
 
@@ -243,7 +243,7 @@ Maven 对于已经把源码提交的仓库的源码，可以在你需要查看�
 
 一般情况下，我们更偏向于复制该文件至 `~/.m2/` 目录下「这里 `~` 表示用户目录」。修改该文件，在用户范围定制 `Maven` 的行为。
 
-![simple_settings.xml](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_settings.xml.png)
+![simple_settings.xml](http://h.img.siblings.top/maven_intro_settings.xml.png)
 
 > `<server>` 指定了我们私有仓库的用户名和密码，可以用来上传我们自己的 jar 组件到自己的仓库中
 > `<repository>` 指定了我们的私有仓库的在网络上的位置，用于存储网络上已发布到中央仓库的 jar 包和我们自己发布的组件
@@ -260,7 +260,7 @@ Maven 对于已经把源码提交的仓库的源码，可以在你需要查看�
 
 eg.  `org.springframework.spring-core-3.2.4.jar`
 
-![repository_dir_structure](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_repository_dir_tree_160919.png)
+![repository_dir_structure](http://h.img.siblings.top/maven_intro_repository_dir_tree_160919.png)
 
 除了本地仓库之外，`Maven` 还有上文中已提及到的 [中央仓库](https://repo1.maven.org/maven2/) 和 私有仓库「`Nexus` or `Artifactory`」
 
@@ -278,7 +278,7 @@ eg.  `org.springframework.spring-core-3.2.4.jar`
 
 eg.  当我们在项目中配置 `spring-core-2.5.6.jar` 的依赖时， `Maven` 是如何找到这个构件，并下载到本地
 
-![maven_intro_artifact_query_in_repository_s_order_190920.png](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_artifact_query_in_repository_s_order_190920.png)
+![maven_intro_artifact_query_in_repository_s_order_190920.png](http://h.img.siblings.top/maven_intro_artifact_query_in_repository_s_order_190920.png)
 
 > `Tips`: 由于中央仓库的访问速度太过缓慢， 我们还可以配置一些 [国内的 `Maven` 私服镜像](https://my.oschina.net/fdblog/blog/546938)
 >    比如 `OSC` 的国内镜像 「一般会配置在 `~/.m2/settings.xml` 中」, 
@@ -293,12 +293,12 @@ eg.  当我们在项目中配置 `spring-core-2.5.6.jar` 的依赖时， `Maven`
 
 `Note`: 在使用的过程中，我们还需要注意一些商业项目， 比如 `Oracle` 官方提供的 `JDBC Driver - ojdbc14.jar` 是不会出现在中央仓库中的。所以在使用过程中，我们需要单独把这些特殊的 `artifact` 手工上传到我们的私服上， 所幸这种类型的构件很少。
 
-[Demo](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_3rd_u2_rep_160920.gif)
+[Demo](http://h.img.siblings.top/maven_intro_3rd_u2_rep_160920.gif)
 
 上传成功后， 我们便可以在私服的仓库中看到这个文件
 
 
-![Nexus_3rd_in_rep](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_3rd_in_rep_160920_final.png)
+![Nexus_3rd_in_rep](http://h.img.siblings.top/maven_intro_3rd_in_rep_160920_final.png)
 
 >`Note` : 必须登录以后，才可以在私服上传构件
 
@@ -310,7 +310,7 @@ eg.  当我们在项目中配置 `spring-core-2.5.6.jar` 的依赖时， `Maven`
 
 > 演示 `Maven` 新建一个简单の项目, 展示默认约定的目录结构
 
-[Demo](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_new_in_idea_190920.gif)
+[Demo](http://h.img.siblings.top/maven_intro_new_in_idea_190920.gif)
 
 ### pom.xml
 
@@ -446,7 +446,7 @@ eg.  当我们在项目中配置 `spring-core-2.5.6.jar` 的依赖时， `Maven`
 
 那么, `maven` 项目是如何构建的呢？
 
-![maven_intro_mvn_package_demo.gif](http://7xjzby.com1.z0.glb.clouddn.com/maven_intro_mvn_package_demo.gif)
+![maven_intro_mvn_package_demo.gif](http://h.img.siblings.top/maven_intro_mvn_package_demo.gif)
 
 `mvn package` 会根据 `pom.xml` 中描述的构建配置创建 `jar/war`。
 
