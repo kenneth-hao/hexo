@@ -1,11 +1,12 @@
+title: Analyze Thread Backlog via Thread-dump
+date: 2019-09-16 19:50:22
+tags: [java, thread, dump, backlog]
+
+---
 
 
-故障时间：2018-11-07 18:44
-
-恢复时间：2018-11-07 19:04
 
 原因：JVM 线程积压，导致服务不可用
-
 
 
 排查过程：
@@ -36,7 +37,7 @@
 
 ![](http://h.img.siblings.top/2018/11/07/thread_dump_grep_info_001.png)
 
-
+<!-- more -->
 
 发现这个线程被阻塞，阻塞的原因，是因为在等待锁的释放。
 
