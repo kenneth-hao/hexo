@@ -67,8 +67,8 @@ pagination_dir: page
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
 # theme: landscape
-# theme: yilia
-theme: next
+theme: yilia
+# theme: next
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
@@ -76,3 +76,22 @@ deploy:
   type: git
   repo: https://github.com/kenneth-hao/kenneth-hao.github.io
   branch: master
+
+jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: false
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
